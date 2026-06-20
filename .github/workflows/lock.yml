@@ -1,8 +1,8 @@
 name: Lock
 
+# Disabled on 2026-06-19 because this workflow was repeatedly failing.
+# Restore the schedule and remove the job-level `if` guard to re-enable.
 on:
-  schedule:
-    - cron: '30 0 * * *'
   workflow_dispatch:
 
 permissions:
@@ -14,6 +14,7 @@ concurrency:
 
 jobs:
   lock:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - uses: dessant/lock-threads@7266a7ce5c1df01b1c6db85bf8cd86c737dadbe7 # v4
